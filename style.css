@@ -49,11 +49,20 @@ body {
 .btn.inactive {
     background-color: #888888;
 }
+span.active {
+    color: #ff8800;
+}
+span.inactive {
+    color: #888888;
+}
 .filters .btn {
     padding: 0.4em;
     width: auto;
     font-size: 12px;
     line-height: 100%;
+}
+.filters .btn:hover {
+    font-weight: bold;
 }
 
 /* Team Selection */
@@ -95,6 +104,17 @@ body {
 .player_name {
     border: 1px dotted #444444;
     padding: 0.3em;
+}
+.sort_btn {
+    padding: 0.2em;
+    font-size: 0.6em;
+    vertical-align: middle;
+}
+.sort_btn:hover {
+    color: #bb6600;
+}
+.sort_btn:active {
+    color: #dd2222;
 }
 
 /* Dark Mode */

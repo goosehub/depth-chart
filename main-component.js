@@ -67,7 +67,15 @@ export default {
             </div>
             <div class="positions">
                 <div class="position" v-for="position in filteredPositions">
-                    <p class="position_acronym" :style="'background-color: ' + position.color">{{position.acronym}}</p>
+                    <p class="position_acronym" :style="'background-color: ' + position.color">
+                        {{position.acronym}}
+                        <span class="sort_btn" :class="position.sortingDirection > 0 ? 'active' : ''" @click="sortPosition(position, 1)">
+                            ▲
+                        </span>
+                        <span class="sort_btn" :class="position.sortingDirection < 0 ? 'active' : ''" @click="sortPosition(position, -1)">
+                            ▼
+                        </span>
+                    </p>
                     <div class="position_player" v-for="player in position.players">
                         <p class="player_name">{{player}}</p>
                     </div>
@@ -91,6 +99,9 @@ export default {
         },
         toggleShow(property) {
             this.show[property] = !this.show[property]
+        },
+        sortPosition(position, direction) {
+            position.sortingDirection = direction
         },
         showPosition(position, show) {
             if (position.side === 'offense' && !show.offense) {
@@ -133,9 +144,32 @@ export default {
 
             return Object.filter(object, condition)
         },
+        checkSorted(arr, sortingDirection) {
+            for (let i = 0; i < arr.length - 1; i++) {
+                if (sortingDirection > 0 && arr[i] > arr[i + 1]) {
+                    return false;
+                }
+                if (sortingDirection < 0 && arr[i] < arr[i + 1]) {
+                    return false;
+                }
+            }
+            return true;
+        },
     },
     computed: {
         filteredPositions() {
+            let self = this
+            let positions = this.positions
+            Object.keys(positions).map(function(key, index) {
+              let position = positions[key]
+              if (position.sortingDirection > 0 && !self.checkSorted(position.players, position.sortingDirection)) {
+                  position.players = position.players.sort()
+              }
+              else if (position.sortingDirection < 0 && !self.checkSorted(position.players, position.sortingDirection)) {
+                  position.players = position.players.sort().reverse()
+              }
+              positions[key] = position
+            })
             return this.filterObject(this.positions, position => this.showPosition(position, this.show))
         },
     },
@@ -165,6 +199,7 @@ export default {
                     side: 'offense',
                     group: 'qb',
                     players: ['Trevor Lawrence', 'Dan Marino'],
+                    sortingDirection: 0,
                 },
                 rb: {
                     acronym: 'RB',
@@ -172,6 +207,7 @@ export default {
                     side: 'offense',
                     group: 'rb',
                     players: ['Barry Sanders', 'Gale Sayers', 'Tank Bigsby'],
+                    sortingDirection: 0,
                 },
                 lwr: {
                     acronym: 'LWR',
@@ -179,6 +215,7 @@ export default {
                     side: 'offense',
                     group: 'wr',
                     players: ['Jerry Rice', 'Marvin Harrison'],
+                    sortingDirection: 0,
                 },
                 rwr: {
                     acronym: 'RWR',
@@ -186,6 +223,7 @@ export default {
                     side: 'offense',
                     group: 'wr',
                     players: ['Raymond Berry', 'Cliff Branch', 'Jimmy Smith'],
+                    sortingDirection: 0,
                 },
                 swr: {
                     acronym: 'SWR',
@@ -193,6 +231,7 @@ export default {
                     side: 'offense',
                     group: 'wr',
                     players: ['Cris Carter', 'Calvin Johnson'],
+                    sortingDirection: 0,
                 },
                 te: {
                     acronym: 'TE',
@@ -200,6 +239,7 @@ export default {
                     side: 'offense',
                     group: 'te',
                     players: ['Mike Ditka', 'Shannon Sharpe'],
+                    sortingDirection: 0,
                 },
                 k: {
                     acronym: 'K',
@@ -207,6 +247,7 @@ export default {
                     side: 'defense',
                     group: 'k',
                     players: ['Morten Andersen'],
+                    sortingDirection: 0,
                 },
                 lb: {
                     acronym: 'LB',
@@ -214,6 +255,7 @@ export default {
                     side: 'defense',
                     group: 'lb',
                     players: ['Ray Lewis', 'Bobby Bell', 'Dick Butkus', 'Sam Huff', 'Chuck Howley'],
+                    sortingDirection: 0,
                 },
                 cb: {
                     acronym: 'CB',
@@ -221,6 +263,7 @@ export default {
                     side: 'defense',
                     group: 'db',
                     players: ['Champ Bailey', 'Ronde Barber', 'Willie Brown', 'Jalen Ramsey'],
+                    sortingDirection: 0,
                 },
                 s: {
                     acronym: 'S',
@@ -228,6 +271,7 @@ export default {
                     side: 'defense',
                     group: 'db',
                     players: ['Troy Polamalu', 'Ed Reed'],
+                    sortingDirection: 0,
                 },
                 de: {
                     acronym: 'DE',
@@ -235,6 +279,7 @@ export default {
                     side: 'defense',
                     group: 'dl',
                     players: ['Willie Davis', 'Dwight Freeney', 'Doug Atkins', 'Josh Hines-Allen'],
+                    sortingDirection: 0,
                 },
                 dt: {
                     acronym: 'DT',
@@ -242,6 +287,7 @@ export default {
                     side: 'defense',
                     group: 'dl',
                     players: ['Art Donovan', 'Curley Culp'],
+                    sortingDirection: 0,
                 },
             },
             teamInfo: {
