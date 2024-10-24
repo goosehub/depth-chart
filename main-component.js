@@ -1,5 +1,41 @@
 import { ref } from 'vue'
 export default {
+    template: `
+    <section class="root_section" :class="darkMode ? 'dark_mode' : ''">
+        <div class="heading">
+            <h1 class="depth_chart_header">Team Depth Charts</h1>
+            <div class="blur"></div>
+        </div>
+        <div v-if="currentTeam">
+            <div class="team_selection_parent">
+                <img class="team_logo" :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
+                <h2 class="team_name">{{currentTeam.fullName}}</h2>
+                <select class="team_select" v-model="currentTeam">
+                    <option v-for="team in teamInfo" :value="team">
+                        {{team.fullName}}
+                    </option>
+                </select>
+            </div>
+            <div class="positions">
+                <div class="position" v-for="position in positions">
+                    <p class="position_acronym" :style="'background-color: ' + position.color">{{position.acronym}}</p>
+                    <div class="position_player" v-for="player in position.players">
+                        <p class="player_name">{{player}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <test></test>
+        <button class="btn" @click="toggleDarkMode()">
+            Switch to {{darkMode ? 'Light' : 'Dark'}} Mode
+        </button>
+        <a href="https://github.com/goosehub/depth-chart" target="_blank" aria-label="Github Link">
+            <button class="btn">
+                View On Github
+            </button>
+        </a>
+    </section>
+    `,
     setup() {
     },
     mounted() {
@@ -9,6 +45,80 @@ export default {
         return {
             currentTeam: null,
             darkMode: false,
+            positions: {
+                qb: {
+                    acronym: 'QB',
+                    color: '#00ff00',
+                    type: 'offense',
+                    players: ['Tom Brady', 'Dan Marino'],
+                },
+                rb: {
+                    acronym: 'RB',
+                    color: '#ff0000',
+                    type: 'offense',
+                    players: ['Barry Sanders', 'Gale Sayers', 'Jim Taylor'],
+                },
+                lwr: {
+                    acronym: 'LWR',
+                    color: '#0000ff',
+                    type: 'offense',
+                    players: ['Jerry Rice', 'Marvin Harrison'],
+                },
+                rwr: {
+                    acronym: 'RWR',
+                    color: '#0000ff',
+                    type: 'offense',
+                    players: ['Raymond Berry', 'Cliff Branch'],
+                },
+                swr: {
+                    acronym: 'SWR',
+                    color: '#0000ff',
+                    type: 'offense',
+                    players: ['Cris Carter', 'Calvin Johnson'],
+                },
+                te: {
+                    acronym: 'TE',
+                    color: '#00ffff',
+                    type: 'offense',
+                    players: ['Mike Ditka', 'Shannon Sharpe'],
+                },
+                k: {
+                    acronym: 'K',
+                    color: '#ffbbbb',
+                    type: 'special',
+                    players: ['Morten Andersen'],
+                },
+                lb: {
+                    acronym: 'LB',
+                    color: '#666666',
+                    type: 'defense',
+                    players: ['Ray Lewis', 'Bobby Bell', 'Dick Butkus', 'Sam Huff', 'Chuck Howley'],
+                },
+                cb: {
+                    acronym: 'CB',
+                    color: '#888888',
+                    type: 'defense',
+                    players: ['Champ Bailey', 'Ronde Barber', 'Willie Brown'],
+                },
+                s: {
+                    acronym: 'S',
+                    color: '#888888',
+                    type: 'defense',
+                    players: ['Troy Polamalu', 'Ed Reed'],
+                },
+                de: {
+                    acronym: 'DE',
+                    color: '#444444',
+                    type: 'defense',
+                    players: ['Willie Davis', 'Dwight Freeney', 'Doug Atkins'],
+                },
+                dt: {
+                    acronym: 'DT',
+                    color: '#444444',
+                    type: 'defense',
+                    players: ['Art Donovan', 'Curley Culp'],
+                },
+            },
             teamInfo: {
                 cardinals: {
                     fullName: 'Arizona Cardinals',
@@ -210,31 +320,4 @@ export default {
             this.darkMode = !this.darkMode
         },
     },
-    template: `
-    <section class="root_section" :class="darkMode ? 'dark_mode' : ''">
-        <div class="heading">
-            <h1 class="depth_chart_header">Team Depth Charts</h1>
-            <div class="blur"></div>
-        </div>
-        <div v-if="currentTeam">
-        <h2 class="team_name">{{currentTeam.fullName}}</h2>
-        <img class="team_logo" :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
-        <select class="team_select" v-model="currentTeam">
-                <option v-for="team in teamInfo" :value="team">
-                {{team.fullName}}
-            </option>
-            </select>
-        </div>
-        <button @click="toggleDarkMode()">
-            Switch to {{darkMode ? 'Light' : 'Dark'}} Mode
-        </button>
-        <p>
-            Welcome to this page.
-        </p>
-        <test></test>
-        <a href="https://github.com/goosehub/depth-chart" target="_blank" aria-label="Github Link" class="btn">
-            Link to this project on Github
-        </a>
-    </section>
-    `
 }

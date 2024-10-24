@@ -9,11 +9,11 @@
 }
 body {
     min-height: 100vh;
-    background-color: #4a4a4a;
+    background-color: #cccccc;
     max-width: 1200px;
     margin: auto;
     padding: 5px;
-    color: #aaa;
+    color: #4a4a4a;
     font-size: 20px;
 }
 .root_section {
@@ -53,7 +53,7 @@ body {
 .depth_chart_header {
     font-size: 60px;
     font-weight: bold;
-    color: white;
+    color: #4a4a4a;
 }
 .blur {
     position: absolute;
@@ -72,15 +72,51 @@ body {
 }
 
 /* Team Selection */
+.team_selection_parent {
+    display: flex;
+    overflow: auto;
+    flex-direction: row;
+}
 .team_logo {
-    border: 2px solid black;
+    flex: 0;
+    border: 2px solid #000000;
     border-radius: 5px;
+}
+.team_name {
+    flex: 5;
+    text-align: left;
+}
+.team_select {
+    flex: 2;
+    height: 2em;
+}
+
+/* Positions */
+.positions {
+    display: flex;
+    overflow: auto;
+    flex-direction: row;
+}
+.position_acronym {
+    border: 1px solid #000000;
+    color: #cccccc;
+    text-shadow: 1px 1px 0px #444444, -1px -1px 0px #444444, 1px -1px 0px #444444, -1px 1px 0px #444444;
+}
+.position {
+    flex: 1 1;
+}
+.player_name {
+    border: 1px dotted #444444;
+    padding: 0.3em;
 }
 
 /* Dark Mode */
 body:has(.dark_mode) {
-    background-color: #000;
-    color: red;
+    background-color: #000000;
+    color: #aaaaaa;
+}
+body:has(.dark_mode) .depth_chart_header {
+    color: #aaaaaa;
 }
 
 /* Mobile */
