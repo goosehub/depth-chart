@@ -2,10 +2,7 @@ import { ref } from 'vue'
 export default {
     template: `
     <section class="root_section" :class="darkMode ? 'dark_mode' : ''">
-        <div class="heading">
-            <h1 class="depth_chart_header">Team Depth Charts</h1>
-            <div class="blur"></div>
-        </div>
+        <h1 class="depth_chart_header">Team Depth Charts</h1>
         <div v-if="currentTeam">
             <div class="team_selection_parent">
                 <img class="team_logo" :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
@@ -19,33 +16,53 @@ export default {
             <div class="filters">
                 <button class="btn" :class="show.offense ? 'active' : 'inactive'" @click="toggleShow('offense')">
                     Offense
+                    <span v-if="show.offense">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.defense ? 'active' : 'inactive'" @click="toggleShow('defense')">
                     Defense
+                    <span v-if="show.defense">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.qb ? 'active' : 'inactive'" @click="toggleShow('qb')">
                     QB
+                    <span v-if="show.qb">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.rb ? 'active' : 'inactive'" @click="toggleShow('rb')">
                     RB
+                    <span v-if="show.rb">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.wr ? 'active' : 'inactive'" @click="toggleShow('wr')">
                     WR
+                    <span v-if="show.wr">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.te ? 'active' : 'inactive'" @click="toggleShow('te')">
                     TE
+                    <span v-if="show.te">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.k ? 'active' : 'inactive'" @click="toggleShow('k')">
                     K
+                    <span v-if="show.k">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.dl ? 'active' : 'inactive'" @click="toggleShow('dl')">
                     DL
+                    <span v-if="show.dl">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.lb ? 'active' : 'inactive'" @click="toggleShow('lb')">
                     LB
+                    <span v-if="show.lb">✓</span>
+                    <span v-else>X</span>
                 </button>
                 <button class="btn" :class="show.db ? 'active' : 'inactive'" @click="toggleShow('db')">
                     DB
+                    <span v-if="show.db">✓</span>
+                    <span v-else>X</span>
                 </button>
             </div>
             <div class="positions">
