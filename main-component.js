@@ -17,16 +17,18 @@ export default {
                 </button>
             </a>
         </div>
-        <h1 class="depth_chart_header">Team Depth Charts</h1>
         <div v-if="currentTeam">
-            <div class="team_selection_parent">
+            <div class="team_info">
                 <img class="team_logo" :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
-                <h2 class="team_name">{{currentTeam.fullName}}</h2>
-                <select class="team_select" v-model="currentTeam" aria-label="Select Team">
-                    <option v-for="team in teamInfo" :value="team">
-                        {{team.fullName}}
-                    </option>
-                </select>
+                <h2 class="team_name">{{currentTeam.fullName}} Depth Chart</h2>
+                <div class="team_selection_parent">
+                    <label class="team_select_label">Team:</label>
+                    <select class="team_select" v-model="currentTeam" aria-label="Select Team">
+                        <option v-for="team in teamInfo" :value="team">
+                            {{team.fullName}}
+                        </option>
+                    </select>
+                </div>
             </div>
             <div class="filters" aria-label="Filters">
                 <button class="btn" :class="show.offense ? 'active' : 'inactive'" @click="toggleShow('offense')">

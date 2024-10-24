@@ -12,10 +12,12 @@ This project makes use of modules, so [CORS will block requests if opened from d
 
 - Using a no build tools Vue.js via CDN
 - Using plain CSS with Flexbox, no frameworks
-- Semantic HTML
+- Response design for all screen sizes
 - Abstraction of CSS color scheme
+- Semantic HTML
 - Keyboard navigation of top level inputs
 - Accessibility for screen readers with aria-label and alt tags
+- Easy to understand and extend code
 
 ## Features
 

@@ -3,10 +3,11 @@
 /* Colors */
 :root {
     --color-pure-white: #ffffff;
-    --color-off-white: #cccccc;
+    --color-off-white: #e8e8e8;
     --color-light-gray: #aaaaaa;
     --color-pure-gray: #888888;
     --color-dark-gray: #4a4a4a;
+    --color-off-black: #222222;
     --color-pure-black: #000000;
     --color-light-orange: #ff8800;
     --color-dark-orange: #bb6600;
@@ -23,21 +24,22 @@
 }
 body {
     min-height: 100vh;
-    background-color: var(--color-off-white);
+    background-color: var(--color-pure-white);
     margin: auto;
     padding: 5px;
     color: var(--color-dark-gray);
     font-size: 20px;
 }
 .root_section {
-    display: flex;
-    width: 90%;
-    margin: 0 auto;
+    width: 94vw;
+    margin: 2em auto;
+    padding: 1em;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    background-color: var(--color-off-white);
+    border: 2px solid var(--color-pure-black);
+    border-radius: 1em;
     text-align: center;
-    gap: 20px;
+    box-shadow: inset 0px 0px 5px 3px rgba(0,0,0,0.3);
 }
 
 /* Buttons */
@@ -81,15 +83,12 @@ a.cory .btn {
     background-color: var(--color-light-gray);
 }
 
-/* Header */
-h1 {
-    padding-top: 2em;
-}
-
 /* Filters */
 .filters {
     display: flex;
     width: 66%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 .filters .btn {
     flex: 1;
@@ -103,7 +102,7 @@ h1 {
 }
 
 /* Team Selection */
-.team_selection_parent {
+.team_info {
     display: flex;
     overflow: auto;
     flex-direction: row;
@@ -119,9 +118,16 @@ h1 {
     font-weight: bold;
     color: var(--color-dark-gray);
 }
-.team_select {
+.team_selection_parent {
     flex: 2;
-    height: 2em;
+}
+.team_select_label {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-right: 1em;
+}
+.team_select {
+    height: 3em;
 }
 
 /* Positions */
@@ -141,6 +147,7 @@ h1 {
 .player_name {
     border: 1px dotted var(--color-dark-gray);
     padding: 0.3em;
+    text-align: left;
 }
 .sort_btn {
     padding: 0.2em;
@@ -162,5 +169,29 @@ body:has(.dark_mode) {
 body:has(.dark_mode) .depth_chart_header {
     color: var(--color-light-gray);
 }
+body:has(.dark_mode) .root_section {
+    background-color: var(--color-off-black);
+    color: var(--color-light-gray);
+}
+body:has(.dark_mode) .root_section {
+    .team_name {
+        color: var(--color-off-white);
+    }
+}
 
 /* Mobile */
+@media (max-width: 999px) {
+    .cory {
+        display: none;
+    }
+    .team_info, .positions {
+        flex-direction: column;
+    }
+    .filters {
+        display: flex;
+        width: 100%;
+    }
+    .filters .btn {
+        padding: 0.2em;
+    }
+}
