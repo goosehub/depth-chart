@@ -1,6 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
-/* Root */
+/* Colors */
+:root {
+    --color-pure-white: #ffffff;
+    --color-off-white: #cccccc;
+    --color-light-gray: #aaaaaa;
+    --color-pure-gray: #888888;
+    --color-dark-gray: #4a4a4a;
+    --color-pure-black: #000000;
+    --color-light-orange: #ff8800;
+    --color-dark-orange: #bb6600;
+    --color-light-teal: #41b883;
+    --color-dark-teal: #3e9f73;
+}
+
+/* Global */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,17 +23,16 @@
 }
 body {
     min-height: 100vh;
-    background-color: #cccccc;
-    max-width: 1200px;
+    background-color: var(--color-off-white);
     margin: auto;
     padding: 5px;
-    color: #4a4a4a;
+    color: var(--color-dark-gray);
     font-size: 20px;
 }
 .root_section {
     display: flex;
-    width: 100%;
-    min-height: 100vh;
+    width: 90%;
+    margin: 0 auto;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -29,33 +42,40 @@ body {
 
 /* Buttons */
 .btn {
-    background-color: #41b883;
+    background-color: var(--color-light-teal);
     transition: all 0.3s ease;
-    color: white;
+    color: var(--color-pure-white);
     text-decoration: none;
     padding: 15px 50px;
     font-size: 18px;
     line-height: 120%;
-    width: 300px;
+    width: 20em;
     margin-left: auto;
     margin-right: auto;
 }
 .btn:hover {
-    background-color: #3e9f73;
+    background-color: var(--color-dark-teal);
 }
 .btn.active {
-    background-color: #ff8800;
+    background-color: var(--color-light-orange);
 }
 .btn.inactive {
-    background-color: #888888;
+    background-color: var(--color-pure-gray);
 }
 span.active {
-    color: #ff8800;
+    color: var(--color-light-orange);
 }
 span.inactive {
-    color: #888888;
+    color: var(--color-pure-gray);
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    width: 66%;
 }
 .filters .btn {
+    flex: 1;
     padding: 0.4em;
     width: auto;
     font-size: 12px;
@@ -73,14 +93,14 @@ span.inactive {
 }
 .team_logo {
     flex: 0;
-    border: 2px solid #000000;
+    border: 2px solid var(--color-pure-black);
     border-radius: 5px;
 }
 .team_name {
     flex: 5;
     text-align: left;
     font-weight: bold;
-    color: #4a4a4a;
+    color: var(--color-dark-gray);
 }
 .team_select {
     flex: 2;
@@ -94,15 +114,15 @@ span.inactive {
     flex-direction: row;
 }
 .position_acronym {
-    border: 1px solid #000000;
-    color: #cccccc;
-    text-shadow: 1px 1px 0px #444444, -1px -1px 0px #444444, 1px -1px 0px #444444, -1px 1px 0px #444444;
+    border: 1px solid var(--color-pure-black);
+    color: var(--color-off-white);
+    text-shadow: 1px 1px 0px var(--color-dark-gray), -1px -1px 0px var(--color-dark-gray), 1px -1px 0px var(--color-dark-gray), -1px 1px 0px var(--color-dark-gray);
 }
 .position {
     flex: 1 1;
 }
 .player_name {
-    border: 1px dotted #444444;
+    border: 1px dotted var(--color-dark-gray);
     padding: 0.3em;
 }
 .sort_btn {
@@ -111,19 +131,19 @@ span.inactive {
     vertical-align: middle;
 }
 .sort_btn:hover {
-    color: #bb6600;
+    color: var(--color-dark-orange);
 }
 .sort_btn:active {
-    color: #dd2222;
+    color: var(--color-light-orange);
 }
 
 /* Dark Mode */
 body:has(.dark_mode) {
-    background-color: #000000;
-    color: #aaaaaa;
+    background-color: var(--color-pure-black);
+    color: var(--color-light-gray);
 }
 body:has(.dark_mode) .depth_chart_header {
-    color: #aaaaaa;
+    color: var(--color-light-gray);
 }
 
 /* Mobile */

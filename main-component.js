@@ -7,72 +7,72 @@ export default {
             <div class="team_selection_parent">
                 <img class="team_logo" :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
                 <h2 class="team_name">{{currentTeam.fullName}}</h2>
-                <select class="team_select" v-model="currentTeam">
+                <select class="team_select" v-model="currentTeam" aria-label="Select Team">
                     <option v-for="team in teamInfo" :value="team">
                         {{team.fullName}}
                     </option>
                 </select>
             </div>
-            <div class="filters">
+            <div class="filters" aria-label="Filters">
                 <button class="btn" :class="show.offense ? 'active' : 'inactive'" @click="toggleShow('offense')">
                     Offense
-                    <span v-if="show.offense">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.offense" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.defense ? 'active' : 'inactive'" @click="toggleShow('defense')">
                     Defense
-                    <span v-if="show.defense">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.defense" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.qb ? 'active' : 'inactive'" @click="toggleShow('qb')">
                     QB
-                    <span v-if="show.qb">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.qb" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.rb ? 'active' : 'inactive'" @click="toggleShow('rb')">
                     RB
-                    <span v-if="show.rb">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.rb" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.wr ? 'active' : 'inactive'" @click="toggleShow('wr')">
                     WR
-                    <span v-if="show.wr">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.wr" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.te ? 'active' : 'inactive'" @click="toggleShow('te')">
                     TE
-                    <span v-if="show.te">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.te" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.k ? 'active' : 'inactive'" @click="toggleShow('k')">
                     K
-                    <span v-if="show.k">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.k" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.dl ? 'active' : 'inactive'" @click="toggleShow('dl')">
                     DL
-                    <span v-if="show.dl">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.dl" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.lb ? 'active' : 'inactive'" @click="toggleShow('lb')">
                     LB
-                    <span v-if="show.lb">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.lb" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
                 <button class="btn" :class="show.db ? 'active' : 'inactive'" @click="toggleShow('db')">
                     DB
-                    <span v-if="show.db">✓</span>
-                    <span v-else>X</span>
+                    <span v-if="show.db" aria-label="Visible, select to hide">✓</span>
+                    <span v-else aria-label="Hidden, select to show">X</span>
                 </button>
             </div>
             <div class="positions">
                 <div class="position" v-for="position in filteredPositions">
                     <p class="position_acronym" :style="'background-color: ' + position.color">
                         {{position.acronym}}
-                        <span class="sort_btn" :class="position.sortingDirection > 0 ? 'active' : ''" @click="sortPosition(position, 1)">
+                        <span class="sort_btn" :class="position.sortingDirection > 0 ? 'active' : ''" @click="sortPosition(position, 1)" aria-label="Sort ascending">
                             ▲
                         </span>
-                        <span class="sort_btn" :class="position.sortingDirection < 0 ? 'active' : ''" @click="sortPosition(position, -1)">
+                        <span class="sort_btn" :class="position.sortingDirection < 0 ? 'active' : ''" @click="sortPosition(position, -1)" aria-label="Sort descending">
                             ▼
                         </span>
                     </p>
@@ -86,7 +86,7 @@ export default {
         <button class="btn" @click="toggleDarkMode()">
             Switch to {{darkMode ? 'Light' : 'Dark'}} Mode
         </button>
-        <a href="https://github.com/goosehub/depth-chart" target="_blank" aria-label="Github Link">
+        <a href="https://github.com/goosehub/depth-chart" target="_blank" aria-label="Link to Github">
             <button class="btn">
                 View On Github
             </button>

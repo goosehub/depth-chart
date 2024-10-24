@@ -20,3 +20,7 @@ This project makes use of modules, so [CORS will block requests if opened from d
 - Filtering by Offense, Defense, and Position Groups
 - Independent sorting of positional players
 - Dark Mode
+- Flexbox based CSS grid and abstraction of CSS color scheme
+- Clean semantic HTML
+- Keyboard navigation of top level inputs
+- Accessibility for screen readers with aria-label and alt tags
