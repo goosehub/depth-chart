@@ -33,9 +33,17 @@
     <script type="module">
       import { createApp } from 'vue'
       import MainComponent from './main-component.js'
-      import MyComponent from './my-component.js'
+      import Navigation from './navigation.js'
+      import Team from './team.js'
+      import Filters from './filters.js'
+      import Positions from './positions.js'
 
-      createApp(MainComponent).component('test', MyComponent).mount('#app')
+      createApp(MainComponent)
+      .component('navigation', Navigation)
+      .component('team', Team)
+      .component('filters', Filters)
+      .component('positions', Positions)
+      .mount('#app')
     </script>
   </body>
   <script>
