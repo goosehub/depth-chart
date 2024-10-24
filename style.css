@@ -42,14 +42,11 @@ body {
 
 /* Buttons */
 .btn {
-    background-color: var(--color-light-teal);
     transition: all 0.3s ease;
     color: var(--color-pure-white);
     text-decoration: none;
-    padding: 15px 50px;
     font-size: 18px;
     line-height: 120%;
-    width: 20em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -67,6 +64,26 @@ span.active {
 }
 span.inactive {
     color: var(--color-pure-gray);
+}
+
+/* Navigation */
+.navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.navigation .btn {
+    display: inline-block;
+    background-color: var(--color-light-teal);
+    padding: 0.1em 0.5em;
+}
+a.cory .btn {
+    background-color: var(--color-light-gray);
+}
+
+/* Header */
+h1 {
+    padding-top: 2em;
 }
 
 /* Filters */
