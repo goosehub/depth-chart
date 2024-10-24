@@ -17,21 +17,43 @@ export default {
                 </select>
             </div>
             <div class="filters">
-                <button class="btn" :class="showOffense ? 'active' : 'inactive'" @click="showOffense = !showOffense">
+                <button class="btn" :class="show.offense ? 'active' : 'inactive'" @click="toggleShow('offense')">
                     Offense
                 </button>
-                <button class="btn" :class="showDefense ? 'active' : 'inactive'" @click="showDefense = !showDefense">
+                <button class="btn" :class="show.defense ? 'active' : 'inactive'" @click="toggleShow('defense')">
                     Defense
+                </button>
+                <button class="btn" :class="show.qb ? 'active' : 'inactive'" @click="toggleShow('qb')">
+                    QB
+                </button>
+                <button class="btn" :class="show.rb ? 'active' : 'inactive'" @click="toggleShow('rb')">
+                    RB
+                </button>
+                <button class="btn" :class="show.wr ? 'active' : 'inactive'" @click="toggleShow('wr')">
+                    WR
+                </button>
+                <button class="btn" :class="show.te ? 'active' : 'inactive'" @click="toggleShow('te')">
+                    TE
+                </button>
+                <button class="btn" :class="show.k ? 'active' : 'inactive'" @click="toggleShow('k')">
+                    K
+                </button>
+                <button class="btn" :class="show.dl ? 'active' : 'inactive'" @click="toggleShow('dl')">
+                    DL
+                </button>
+                <button class="btn" :class="show.lb ? 'active' : 'inactive'" @click="toggleShow('lb')">
+                    LB
+                </button>
+                <button class="btn" :class="show.db ? 'active' : 'inactive'" @click="toggleShow('db')">
+                    DB
                 </button>
             </div>
             <div class="positions">
-                <div class="position" v-for="position in positions">
-                    <span v-if="(position.type === 'offense' && showOffense) || (position.type === 'defense' && showDefense)">
-                        <p class="position_acronym" :style="'background-color: ' + position.color">{{position.acronym}}</p>
-                        <div class="position_player" v-for="player in position.players">
-                            <p class="player_name">{{player}}</p>
-                        </div>
-                    </span>
+                <div class="position" v-for="position in filteredPositions">
+                    <p class="position_acronym" :style="'background-color: ' + position.color">{{position.acronym}}</p>
+                    <div class="position_player" v-for="player in position.players">
+                        <p class="player_name">{{player}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,8 +72,54 @@ export default {
         toggleDarkMode() {
             this.darkMode = !this.darkMode
         },
-        foobar() {
+        toggleShow(property) {
+            this.show[property] = !this.show[property]
+        },
+        showPosition(position, show) {
+            if (position.side === 'offense' && !show.offense) {
+                return false
+            }
+            if (position.side === 'defense' && !show.defense) {
+                return false
+            }
+            if (position.group === 'qb' && !show.qb) {
+                return false;
+            }
+            if (position.group === 'rb' && !show.rb) {
+                return false;
+            }
+            if (position.group === 'wr' && !show.wr) {
+                return false;
+            }
+            if (position.group === 'te' && !show.te) {
+                return false;
+            }
+            if (position.group === 'k' && !show.k) {
+                return false;
+            }
+            if (position.group === 'dl' && !show.dl) {
+                return false;
+            }
+            if (position.group === 'lb' && !show.lb) {
+                return false;
+            }
+            if (position.group === 'db' && !show.db) {
+                return false;
+            }
+            return true
+        },
+        filterObject(object, condition) {
+            Object.filter = (obj, predicate) => 
+                Object.keys(obj)
+                    .filter( key => predicate(obj[key]) )
+                    .reduce( (res, key) => (res[key] = obj[key], res), {} );
 
+            return Object.filter(object, condition)
+        },
+    },
+    computed: {
+        filteredPositions() {
+            return this.filterObject(this.positions, position => this.showPosition(position, this.show))
         },
     },
     mounted() {
@@ -61,79 +129,101 @@ export default {
         return {
             currentTeam: null,
             darkMode: false,
-            showOffense: true,
-            showDefense: true,
+            show: {
+                offense: true,
+                defense: true,
+                qb: true,
+                rb: true,
+                wr: true,
+                te: true,
+                k: true,
+                dl: true,
+                lb: true,
+                db: true,
+            },
             positions: {
                 qb: {
                     acronym: 'QB',
                     color: '#00ff00',
-                    type: 'offense',
-                    players: ['Tom Brady', 'Dan Marino'],
+                    side: 'offense',
+                    group: 'qb',
+                    players: ['Trevor Lawrence', 'Dan Marino'],
                 },
                 rb: {
                     acronym: 'RB',
                     color: '#ff0000',
-                    type: 'offense',
-                    players: ['Barry Sanders', 'Gale Sayers', 'Jim Taylor'],
+                    side: 'offense',
+                    group: 'rb',
+                    players: ['Barry Sanders', 'Gale Sayers', 'Tank Bigsby'],
                 },
                 lwr: {
                     acronym: 'LWR',
                     color: '#0000ff',
-                    type: 'offense',
+                    side: 'offense',
+                    group: 'wr',
                     players: ['Jerry Rice', 'Marvin Harrison'],
                 },
                 rwr: {
                     acronym: 'RWR',
                     color: '#0000ff',
-                    type: 'offense',
-                    players: ['Raymond Berry', 'Cliff Branch'],
+                    side: 'offense',
+                    group: 'wr',
+                    players: ['Raymond Berry', 'Cliff Branch', 'Jimmy Smith'],
                 },
                 swr: {
                     acronym: 'SWR',
                     color: '#0000ff',
-                    type: 'offense',
+                    side: 'offense',
+                    group: 'wr',
                     players: ['Cris Carter', 'Calvin Johnson'],
                 },
                 te: {
                     acronym: 'TE',
                     color: '#00ffff',
-                    type: 'offense',
+                    side: 'offense',
+                    group: 'te',
                     players: ['Mike Ditka', 'Shannon Sharpe'],
                 },
                 k: {
                     acronym: 'K',
                     color: '#ffbbbb',
-                    type: 'defense',
+                    side: 'defense',
+                    group: 'k',
                     players: ['Morten Andersen'],
                 },
                 lb: {
                     acronym: 'LB',
                     color: '#666666',
-                    type: 'defense',
+                    side: 'defense',
+                    group: 'lb',
                     players: ['Ray Lewis', 'Bobby Bell', 'Dick Butkus', 'Sam Huff', 'Chuck Howley'],
                 },
                 cb: {
                     acronym: 'CB',
                     color: '#888888',
-                    type: 'defense',
-                    players: ['Champ Bailey', 'Ronde Barber', 'Willie Brown'],
+                    side: 'defense',
+                    group: 'db',
+                    players: ['Champ Bailey', 'Ronde Barber', 'Willie Brown', 'Jalen Ramsey'],
                 },
                 s: {
                     acronym: 'S',
                     color: '#888888',
-                    type: 'defense',
+                    side: 'defense',
+                    group: 'db',
                     players: ['Troy Polamalu', 'Ed Reed'],
                 },
                 de: {
                     acronym: 'DE',
                     color: '#444444',
-                    type: 'defense',
-                    players: ['Willie Davis', 'Dwight Freeney', 'Doug Atkins'],
+                    side: 'defense',
+                    group: 'dl',
+                    players: ['Willie Davis', 'Dwight Freeney', 'Doug Atkins', 'Josh Hines-Allen'],
                 },
                 dt: {
                     acronym: 'DT',
                     color: '#444444',
-                    type: 'defense',
+                    side: 'defense',
+                    group: 'dl',
                     players: ['Art Donovan', 'Curley Culp'],
                 },
             },

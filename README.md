@@ -17,4 +17,5 @@ This project makes use of modules, so [CORS will block requests if opened from d
 ## Features
 
 - Team Selection
+- Filtering by Offense, Defense, and Position Groups
 - Dark Mode
