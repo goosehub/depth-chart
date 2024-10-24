@@ -2,10 +2,12 @@ import { ref } from 'vue'
 export default {
     template: `
         <div class="team_info" v-if="currentTeam">
-            <img class="team_logo" :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
+            <div class="team_logo">
+                <img :src="'images/' + currentTeam.image + '.gif'" :alt="currentTeam.fullName"/>
+            </div>
             <h2 class="team_name">{{currentTeam.fullName}} Depth Chart</h2>
             <div class="team_selection_parent">
-                <label class="team_select_label">Team:</label>
+                <label class="team_select_label">Select Team:</label>
                 <select class="team_select" v-model="currentTeam" aria-label="Select Team">
                     <option v-for="team in teamInfo" :value="team">
                         {{team.fullName}}

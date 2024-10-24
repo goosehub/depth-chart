@@ -103,7 +103,7 @@ export default {
             positions: {
                 qb: {
                     acronym: 'QB',
-                    color: '#00ff00',
+                    color: '#00bb00',
                     side: 'offense',
                     group: 'qb',
                     players: ['Trevor Lawrence', 'Dan Marino'],
@@ -111,7 +111,7 @@ export default {
                 },
                 rb: {
                     acronym: 'RB',
-                    color: '#ff0000',
+                    color: '#bb0000',
                     side: 'offense',
                     group: 'rb',
                     players: ['Barry Sanders', 'Gale Sayers', 'Tank Bigsby'],
@@ -119,7 +119,7 @@ export default {
                 },
                 lwr: {
                     acronym: 'LWR',
-                    color: '#0000ff',
+                    color: '#0000bb',
                     side: 'offense',
                     group: 'wr',
                     players: ['Jerry Rice', 'Marvin Harrison'],
@@ -127,7 +127,7 @@ export default {
                 },
                 rwr: {
                     acronym: 'RWR',
-                    color: '#0000ff',
+                    color: '#0000bb',
                     side: 'offense',
                     group: 'wr',
                     players: ['Raymond Berry', 'Cliff Branch', 'Jimmy Smith'],
@@ -135,7 +135,7 @@ export default {
                 },
                 swr: {
                     acronym: 'SWR',
-                    color: '#0000ff',
+                    color: '#0000bb',
                     side: 'offense',
                     group: 'wr',
                     players: ['Cris Carter', 'Calvin Johnson'],
@@ -143,7 +143,7 @@ export default {
                 },
                 te: {
                     acronym: 'TE',
-                    color: '#00ffff',
+                    color: '#00bbbb',
                     side: 'offense',
                     group: 'te',
                     players: ['Mike Ditka', 'Shannon Sharpe'],
@@ -151,7 +151,7 @@ export default {
                 },
                 k: {
                     acronym: 'K',
-                    color: '#ffbbbb',
+                    color: '#ddbbbb',
                     side: 'defense',
                     group: 'k',
                     players: ['Morten Andersen'],

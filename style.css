@@ -109,6 +109,8 @@ a.cory .btn {
 }
 .team_logo {
     flex: 0;
+}
+.team_logo img {
     border: 2px solid var(--color-pure-black);
     border-radius: 5px;
 }
@@ -117,6 +119,7 @@ a.cory .btn {
     text-align: left;
     font-weight: bold;
     color: var(--color-dark-gray);
+    padding: 0.6em;
 }
 .team_selection_parent {
     flex: 2;
@@ -156,6 +159,8 @@ a.cory .btn {
 }
 .sort_btn:hover {
     color: var(--color-dark-orange);
+    font-weight: bold;
+    cursor: pointer;
 }
 .sort_btn:active {
     color: var(--color-light-orange);
@@ -183,6 +188,14 @@ body:has(.dark_mode) .root_section {
 @media (max-width: 999px) {
     .cory {
         display: none;
+    }
+    .team_logo img {
+        max-height: 20vh;
+        width: auto;
+    }
+    .team_name {
+        padding: 0.1em;
+        font-size: 1.2em;
     }
     .team_info, .positions {
         flex-direction: column;

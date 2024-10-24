@@ -23,7 +23,12 @@ export default {
     ],
     methods: {
         sortPosition(position, direction) {
-            position.sortingDirection = direction
+            if (position.sortingDirection === direction) {
+                position.sortingDirection = 0
+            }
+            else {
+                position.sortingDirection = direction
+            }
         },
     },
     data() {
