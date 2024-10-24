@@ -3,7 +3,7 @@ export default {
     template: `
         <div class="navigation">
             <button class="btn" @click="toggleDarkMode()">
-                Switch to {{$parent.darkMode ? 'Light' : 'Dark'}} Mode
+                Switch to {{darkMode ? 'Light' : 'Dark'}} Mode
             </button>
             <a href="https://github.com/goosehub/depth-chart" target="_blank" aria-label="Link to Github">
                 <button class="btn">
@@ -17,9 +17,12 @@ export default {
             </a>
         </div>
     `,
+    props: [
+      'darkMode',
+    ],
     methods: {
         toggleDarkMode() {
-            this.$parent.darkMode = !this.$parent.darkMode
+            this.$emit('toggleDarkMode')
         },
     },
     data() {

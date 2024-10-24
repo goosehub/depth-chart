@@ -2,15 +2,18 @@ import { ref } from 'vue'
 export default {
     template: `
     <section class="root_section" :class="darkMode ? 'dark_mode' : ''">
-        <navigation></navigation>
+        <navigation :darkMode="darkMode" @toggleDarkMode="toggleDarkMode"></navigation>
         <team></team>
-        <filters :show="show"></filters>
+        <filters :show="show" @toggleShow="toggleShow"></filters>
         <positions :filteredPositions="filteredPositions"></positions>
     </section>
     `,
     methods: {
         toggleDarkMode() {
             this.darkMode = !this.darkMode
+        },
+        toggleShow(property) {
+            this.show[property] = !this.show[property]
         },
         showPosition(position, show) {
             if (position.side === 'offense' && !show.offense) {

@@ -59,7 +59,7 @@ export default {
     ],
     methods: {
         toggleShow(property) {
-            this.$parent.show[property] = !this.$parent.show[property]
+            this.$emit('toggleShow', property)
         },
     },
     data() {
