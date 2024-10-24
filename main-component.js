@@ -16,12 +16,22 @@ export default {
                     </option>
                 </select>
             </div>
+            <div class="filters">
+                <button class="btn" :class="showOffense ? 'active' : 'inactive'" @click="showOffense = !showOffense">
+                    Offense
+                </button>
+                <button class="btn" :class="showDefense ? 'active' : 'inactive'" @click="showDefense = !showDefense">
+                    Defense
+                </button>
+            </div>
             <div class="positions">
                 <div class="position" v-for="position in positions">
-                    <p class="position_acronym" :style="'background-color: ' + position.color">{{position.acronym}}</p>
-                    <div class="position_player" v-for="player in position.players">
-                        <p class="player_name">{{player}}</p>
-                    </div>
+                    <span v-if="(position.type === 'offense' && showOffense) || (position.type === 'defense' && showDefense)">
+                        <p class="position_acronym" :style="'background-color: ' + position.color">{{position.acronym}}</p>
+                        <div class="position_player" v-for="player in position.players">
+                            <p class="player_name">{{player}}</p>
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>
@@ -36,7 +46,13 @@ export default {
         </a>
     </section>
     `,
-    setup() {
+    methods: {
+        toggleDarkMode() {
+            this.darkMode = !this.darkMode
+        },
+        foobar() {
+
+        },
     },
     mounted() {
         this.currentTeam = this.teamInfo.cardinals
@@ -45,6 +61,8 @@ export default {
         return {
             currentTeam: null,
             darkMode: false,
+            showOffense: true,
+            showDefense: true,
             positions: {
                 qb: {
                     acronym: 'QB',
@@ -85,7 +103,7 @@ export default {
                 k: {
                     acronym: 'K',
                     color: '#ffbbbb',
-                    type: 'special',
+                    type: 'defense',
                     players: ['Morten Andersen'],
                 },
                 lb: {
@@ -314,10 +332,5 @@ export default {
                 },
             }
         }
-    },
-    methods: {
-        toggleDarkMode() {
-            this.darkMode = !this.darkMode
-        },
     },
 }

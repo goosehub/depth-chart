@@ -43,6 +43,18 @@ body {
 .btn:hover {
     background-color: #3e9f73;
 }
+.btn.active {
+    background-color: #ff8800;
+}
+.btn.inactive {
+    background-color: #888888;
+}
+.filters .btn {
+    padding: 0.4em;
+    width: auto;
+    font-size: 12px;
+    line-height: 100%;
+}
 
 /* Heading */
 .heading {
