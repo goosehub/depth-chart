@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Character Set -->
+    <meta charset="utf-8">
+    <!-- Title -->
+    <title>Depth Charts</title>
+    <!-- For Responsive Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- For Crawlers -->
+    <meta name="keywords" content="nfl, depth chart, rosters, football, positions, fantasy football, draft sharks">
+    <meta name="description" content="Draft Sharks NFL Depth Charts">
+    <meta name="author" content="Cory Long">
+    <meta name="robots" CONTENT="all">
+    <!-- Style -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css?v1.0" />
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="heading">
+        <h1>Hello World</h1>
+        <div class="blur"></div>
+      </div>
+      <p>
+        Welcome to this page.
+      </p>
+      <div v-for="i in 3">
+        <p>Number {{i}}</p>
+      </div>
+      <a
+        href="https://github.com/goosehub/depth-chart"
+        target="_blank"
+        aria-label="Link to this project on Github"
+        class="btn"
+        >Link to this project on Github
+      </a>
+    </div>
+  </body>
+  <script>
+    const { createApp, ref } = Vue;
+    createApp({
+      setup() {
+        const framework = ref({
+          name: "Vue.js",
+        });
+
+        return { framework };
+      },
+    }).mount("#app");
+  </script>
+</html>
