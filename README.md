@@ -13,14 +13,14 @@ This project makes use of modules, so [CORS will block requests if opened from d
 - Using a no build tools Vue.js via CDN
 - Using plain CSS with Flexbox, no frameworks
 - Response design for screen of all sizes
-- Abstraction of CSS color scheme
 - Semantic and screen reader accessibile HTML
 - Keyboard navigation of top level inputs
-- Easy to understand and extend modular code 
+- Easy to understand and extend modular code
+- Flexible and semantic data structures
 
 ## Features
 
-- Team Selection
-- Filtering by Offense, Defense, and Position Groups
+- Team selection
+- Filtering by offense, defense, and position groups
 - Independent sorting of positional players
-- Dark Mode
+- Dark mode

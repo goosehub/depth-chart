@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Arsenal&family=Anton:wght@300;400;500;600;700;800&display=swap");
 
 /* Colors */
 :root {
@@ -10,8 +10,6 @@
     --color-dark-gray: #4a4a4a;
     --color-off-black: #222222;
     --color-pure-black: #000000;
-    --color-light-orange: #dd6600;
-    --color-dark-orange: #bb4400;
     --color-light-teal: #41b883;
     --color-dark-teal: #3e9f73;
     --color-dark-sharks-blue: #043173;
@@ -58,13 +56,13 @@ body {
     background-color: var(--color-dark-teal);
 }
 .btn.active {
-    background-color: var(--color-light-orange);
+    background-color: var(--color-light-teal);
 }
 .btn.inactive {
     background-color: var(--color-pure-gray);
 }
 span.active {
-    color: var(--color-light-orange);
+    color: var(--color-light-teal);
 }
 span.inactive {
     color: var(--color-pure-gray);
@@ -78,11 +76,11 @@ span.inactive {
 }
 .navigation .btn {
     display: inline-block;
-    background-color: var(--color-light-teal);
     padding: 0.1em 0.5em;
-}
-a.cory .btn {
-    background-color: var(--color-light-gray);
+    background-color: var(--color-light-teal);
+    border-radius: 0.4em;
+    font-family: "Arsenal", sans-serif;
+    font-weight: bold;
 }
 
 /* Filters */
@@ -96,12 +94,13 @@ a.cory .btn {
     flex: 1;
     padding: 0.4em;
     width: auto;
-    font-size: 12px;
+    border-radius: 0.4em;
     line-height: 100%;
+    font-size: 12px;
     font-weight: bold;
 }
 .filters .btn:hover {
-    filter: saturate(120%);
+    filter: saturate(150%);
 }
 
 /* Team Selection */
@@ -119,23 +118,31 @@ a.cory .btn {
 }
 .team_name {
     flex: 5;
+    padding-left: 0.8em;
+    padding-top: 1.2em;
     text-align: left;
     font-weight: bold;
     color: var(--color-dark-sharks-blue);
-    padding: 0.8em;
+    font-family: "Anton", sans-serif;
 }
 .team_selection_parent {
     flex: 2;
 }
 .team_select_label {
+    font-family: "Anton", sans-serif;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin-right: 1em;
     color: var(--color-dark-sharks-blue);
 }
 .team_select {
+    font-family: "Anton", sans-serif;
     height: 3em;
     border: 2px solid var(--color-dark-gray);
+}
+.team_select option {
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
 }
 
 /* Positions Header */
@@ -160,17 +167,19 @@ a.cory .btn {
     flex: 1 1;
     animation: FadeIn 0.3s ease-in;
 }
-.position_player:nth-child(even) .player_name {
-    background-color: var(--color-pure-white);
-}
-.position_player:nth-child(odd) .player_name {
-    background-color: var(--color-almost-white);
-}
 .player_name {
     border: 1px solid var(--color-dark-gray);
     box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
     padding: 0.3em;
     text-align: left;
+    font-family: "Arsenal", sans-serif;
+    font-weight: bold;
+}
+.position_player:nth-child(even) .player_name {
+    background-color: var(--color-pure-white);
+}
+.position_player:nth-child(odd) .player_name {
+    background-color: var(--color-almost-white);
 }
 .sort_btn {
     padding: 0.2em;
@@ -179,12 +188,12 @@ a.cory .btn {
     vertical-align: middle;
 }
 .sort_btn:hover {
-    color: var(--color-dark-orange);
+    color: var(--color-dark-teal);
     font-weight: bold;
     cursor: pointer;
 }
 .sort_btn:active {
-    color: var(--color-light-orange);
+    color: var(--color-light-teal);
 }
 
 /* Dark Mode */
@@ -219,9 +228,6 @@ body:has(.dark_mode) .position_acronym {
 
 /* Mobile */
 @media (max-width: 999px) {
-    .cory {
-        display: none;
-    }
     .team_logo img {
         max-height: 20vh;
         width: auto;

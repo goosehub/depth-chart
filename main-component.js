@@ -3,7 +3,7 @@ export default {
     template: `
     <section class="root_section" :class="darkMode ? 'dark_mode' : ''">
         <navigation :darkMode="darkMode" @toggleDarkMode="toggleDarkMode"></navigation>
-        <team></team>
+        <team @triggerDepthChartUpdate="triggerDepthChartUpdate"></team>
         <filters :show="show" @toggleShow="toggleShow"></filters>
         <positions v-if="!togglingOffense" :filteredPositions="filteredPositionsOffense"></positions>
         <positions v-if="!togglingDefense" :filteredPositions="filteredPositionsDefense"></positions>
@@ -29,6 +29,10 @@ export default {
                 self.togglingOffense = false
                 self.togglingDefense = false
             })
+        },
+        triggerDepthChartUpdate() {
+            this.triggerPositionFadeIn('offense')
+            this.triggerPositionFadeIn('defense')
         },
         showPosition(position, show) {
             if (position.side === 'offense' && !show.offense) {
@@ -108,7 +112,7 @@ export default {
         },
     },
     mounted() {
-        console.log('Hello Draft Sharks! I hope you consider me for the team.');
+        console.log('Hello Draft Sharks! I hope I can join the team.');
     },
     data() {
         return {

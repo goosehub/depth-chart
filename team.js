@@ -8,7 +8,7 @@ export default {
             <h2 class="team_name">{{currentTeam.fullName}} Depth Chart</h2>
             <div class="team_selection_parent">
                 <label class="team_select_label">Select Team:</label>
-                <select class="team_select" v-model="currentTeam" aria-label="Select Team">
+                <select class="team_select" v-model="currentTeam" aria-label="Select Team" @change="triggerDepthChartUpdate">
                     <option v-for="team in teamInfo" :value="team">
                         {{team.fullName}}
                     </option>
@@ -16,6 +16,11 @@ export default {
             </div>
         </div>
     `,
+    methods: {
+        triggerDepthChartUpdate() {
+            this.$emit('triggerDepthChartUpdate')
+        },
+    },
     mounted() {
         this.currentTeam = this.teamInfo.cardinals
     },

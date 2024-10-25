@@ -10,11 +10,6 @@ export default {
                     View On Github
                 </button>
             </a>
-            <a class="cory" href="https://gooseweb.io/resume/" target="_blank" aria-label="Link to Resume">
-                <button class="btn" tabindex="-1">
-                    By Cory Long
-                </button>
-            </a>
         </div>
     `,
     props: [
