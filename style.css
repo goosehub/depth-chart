@@ -3,6 +3,7 @@
 /* Colors */
 :root {
     --color-pure-white: #ffffff;
+    --color-almost-white: #eeeeee;
     --color-off-white: #e8e8e8;
     --color-light-gray: #aaaaaa;
     --color-pure-gray: #888888;
@@ -25,7 +26,7 @@
 }
 body {
     min-height: 100vh;
-    background-color: var(--color-pure-white);
+    background-color: var(--color-almost-white);
     margin: auto;
     padding: 5px;
     color: var(--color-dark-gray);
@@ -97,9 +98,10 @@ a.cory .btn {
     width: auto;
     font-size: 12px;
     line-height: 100%;
+    font-weight: bold;
 }
 .filters .btn:hover {
-    font-weight: bold;
+    filter: saturate(120%);
 }
 
 /* Team Selection */
@@ -139,13 +141,15 @@ a.cory .btn {
 /* Positions Header */
 .positions {
     display: flex;
-    overflow: auto;
     flex-direction: row;
+    overflow: auto;
+    margin-bottom: 1em;
 }
 .position_acronym {
     border: 1px solid var(--color-pure-black);
     color: var(--color-off-white);
     text-shadow: 1px 1px 0px var(--color-dark-gray), -1px -1px 0px var(--color-dark-gray), 1px -1px 0px var(--color-dark-gray), -1px 1px 0px var(--color-dark-gray);
+    font-weight: bold;
 }
 .show_toggle {
     font-size: 0.8em;
@@ -154,6 +158,13 @@ a.cory .btn {
 /* Position */
 .position {
     flex: 1 1;
+    animation: FadeIn 0.3s ease-in;
+}
+.position_player:nth-child(even) .player_name {
+    background-color: var(--color-pure-white);
+}
+.position_player:nth-child(odd) .player_name {
+    background-color: var(--color-almost-white);
 }
 .player_name {
     border: 1px solid var(--color-dark-gray);
@@ -163,6 +174,7 @@ a.cory .btn {
 }
 .sort_btn {
     padding: 0.2em;
+    float: right;
     font-size: 0.6em;
     vertical-align: middle;
 }
@@ -192,6 +204,18 @@ body:has(.dark_mode) .root_section {
         color: var(--color-off-white);
     }
 }
+body:has(.dark_mode) .position_player:nth-child(even) .player_name {
+    background-color: var(--color-off-black);
+}
+body:has(.dark_mode) .position_player:nth-child(odd) .player_name {
+    background-color: var(--color-dark-gray);
+}
+body:has(.dark_mode) .player_name {
+    color: var(--color-almost-white);
+}
+body:has(.dark_mode) .position_acronym {
+    filter: saturate(50%);
+}
 
 /* Mobile */
 @media (max-width: 999px) {
@@ -215,5 +239,15 @@ body:has(.dark_mode) .root_section {
     }
     .filters .btn {
         padding: 0.2em;
+    }
+}
+
+/* Keyframes */
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

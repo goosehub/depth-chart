@@ -5,15 +5,30 @@ export default {
         <navigation :darkMode="darkMode" @toggleDarkMode="toggleDarkMode"></navigation>
         <team></team>
         <filters :show="show" @toggleShow="toggleShow"></filters>
-        <positions :filteredPositions="filteredPositions"></positions>
+        <positions v-if="!togglingOffense" :filteredPositions="filteredPositionsOffense"></positions>
+        <positions v-if="!togglingDefense" :filteredPositions="filteredPositionsDefense"></positions>
     </section>
     `,
     methods: {
         toggleDarkMode() {
             this.darkMode = !this.darkMode
         },
-        toggleShow(property) {
-            this.show[property] = !this.show[property]
+        toggleShow(data) {
+            this.show[data.property] = !this.show[data.property]
+            this.triggerPositionFadeIn(data.side)
+        },
+        triggerPositionFadeIn(side) {
+            let self = this
+            if (side === 'offense') {
+                this.togglingOffense = true
+            }
+            else {
+                this.togglingDefense = true
+            }
+            this.$nextTick(function(){
+                self.togglingOffense = false
+                self.togglingDefense = false
+            })
         },
         showPosition(position, show) {
             if (position.side === 'offense' && !show.offense) {
@@ -67,27 +82,39 @@ export default {
             }
             return true;
         },
-    },
-    computed: {
-        filteredPositions() {
+        sortPositionPlayers() {
             let self = this
             let positions = this.positions
             Object.keys(positions).map(function(key, index) {
-              let position = positions[key]
-              if (position.sortingDirection > 0 && !self.checkSorted(position.players, position.sortingDirection)) {
-                  position.players = position.players.sort()
-              }
-              else if (position.sortingDirection < 0 && !self.checkSorted(position.players, position.sortingDirection)) {
-                  position.players = position.players.sort().reverse()
-              }
-              positions[key] = position
+                let position = positions[key]
+                if (position.sortingDirection > 0 && !self.checkSorted(position.players, position.sortingDirection)) {
+                    position.players = position.players.sort()
+                }
+                else if (position.sortingDirection < 0 && !self.checkSorted(position.players, position.sortingDirection)) {
+                    position.players = position.players.sort().reverse()
+                }
+                positions[key] = position
             })
-            return this.filterObject(this.positions, position => this.showPosition(position, this.show))
         },
+    },
+    computed: {
+        filteredPositionsOffense() {
+            this.sortPositionPlayers()
+            return this.filterObject(this.positions, position => this.showPosition(position, this.show) && position.side === 'offense')
+        },
+        filteredPositionsDefense() {
+            this.sortPositionPlayers()
+            return this.filterObject(this.positions, position => this.showPosition(position, this.show) && position.side === 'defense')
+        },
+    },
+    mounted() {
+        console.log('Hello Draft Sharks! I hope you consider me for the team.');
     },
     data() {
         return {
             darkMode: false,
+            togglingOffense: false,
+            togglingDefense: false,
             show: {
                 offense: true,
                 defense: true,
