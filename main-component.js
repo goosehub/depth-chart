@@ -134,7 +134,7 @@ export default {
             positions: {
                 qb: {
                     acronym: 'QB',
-                    color: '#00bb00',
+                    color: '#229922',
                     side: 'offense',
                     group: 'qb',
                     players: ['Trevor Lawrence', 'Dan Marino'],
@@ -142,7 +142,7 @@ export default {
                 },
                 rb: {
                     acronym: 'RB',
-                    color: '#bb0000',
+                    color: '#992222',
                     side: 'offense',
                     group: 'rb',
                     players: ['Barry Sanders', 'Gale Sayers', 'Tank Bigsby'],
@@ -150,7 +150,7 @@ export default {
                 },
                 lwr: {
                     acronym: 'LWR',
-                    color: '#0000bb',
+                    color: '#2222bb',
                     side: 'offense',
                     group: 'wr',
                     players: ['Jerry Rice', 'Marvin Harrison'],
@@ -158,7 +158,7 @@ export default {
                 },
                 rwr: {
                     acronym: 'RWR',
-                    color: '#0000bb',
+                    color: '#2222bb',
                     side: 'offense',
                     group: 'wr',
                     players: ['Raymond Berry', 'Cliff Branch', 'Jimmy Smith'],
@@ -166,7 +166,7 @@ export default {
                 },
                 swr: {
                     acronym: 'SWR',
-                    color: '#0000bb',
+                    color: '#2222bb',
                     side: 'offense',
                     group: 'wr',
                     players: ['Cris Carter', 'Calvin Johnson'],
@@ -174,7 +174,7 @@ export default {
                 },
                 te: {
                     acronym: 'TE',
-                    color: '#00bbbb',
+                    color: '#22bbbb',
                     side: 'offense',
                     group: 'te',
                     players: ['Mike Ditka', 'Shannon Sharpe'],
@@ -182,7 +182,7 @@ export default {
                 },
                 k: {
                     acronym: 'K',
-                    color: '#ddbbbb',
+                    color: '#dd9999',
                     side: 'defense',
                     group: 'k',
                     players: ['Morten Andersen'],
@@ -190,7 +190,7 @@ export default {
                 },
                 lb: {
                     acronym: 'LB',
-                    color: '#666666',
+                    color: '#555555',
                     side: 'defense',
                     group: 'lb',
                     players: ['Ray Lewis', 'Bobby Bell', 'Dick Butkus', 'Sam Huff', 'Chuck Howley'],
@@ -214,7 +214,7 @@ export default {
                 },
                 de: {
                     acronym: 'DE',
-                    color: '#444444',
+                    color: '#333333',
                     side: 'defense',
                     group: 'dl',
                     players: ['Willie Davis', 'Dwight Freeney', 'Doug Atkins', 'Josh Hines-Allen'],
@@ -222,7 +222,7 @@ export default {
                 },
                 dt: {
                     acronym: 'DT',
-                    color: '#444444',
+                    color: '#333333',
                     side: 'defense',
                     group: 'dl',
                     players: ['Art Donovan', 'Curley Culp'],

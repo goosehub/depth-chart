@@ -5,9 +5,11 @@
     --color-pure-white: #ffffff;
     --color-almost-white: #eeeeee;
     --color-off-white: #e8e8e8;
+    --color-dark-white: #cccccc;
     --color-light-gray: #aaaaaa;
     --color-pure-gray: #888888;
     --color-dark-gray: #4a4a4a;
+    --color-light-black: #333333;
     --color-off-black: #222222;
     --color-pure-black: #000000;
     --color-light-teal: #41b883;
@@ -73,6 +75,7 @@ span.inactive {
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 1000;
 }
 .navigation .btn {
     display: inline-block;
@@ -130,7 +133,6 @@ span.inactive {
 }
 .team_select_label {
     font-family: "Anton", sans-serif;
-    font-weight: bold;
     font-size: 0.9em;
     margin-right: 1em;
     color: var(--color-dark-sharks-blue);
@@ -202,19 +204,18 @@ body:has(.dark_mode) {
     color: var(--color-light-gray);
 }
 body:has(.dark_mode) .team_select_label {
-    color: var(--color-light-gray);
+    color: var(--color-dark-white);
 }
 body:has(.dark_mode) .root_section {
     background-color: var(--color-off-black);
     color: var(--color-light-gray);
 }
-body:has(.dark_mode) .root_section {
-    .team_name {
-        color: var(--color-off-white);
-    }
+body:has(.dark_mode) .team_name {
+    color: var(--color-off-white);
+    text-shadow: 1px 1px 0px var(--color-pure-black), -1px -1px 0px var(--color-pure-black), 1px -1px 0px var(--color-pure-black), -1px 1px 0px var(--color-pure-black);
 }
 body:has(.dark_mode) .position_player:nth-child(even) .player_name {
-    background-color: var(--color-off-black);
+    background-color: var(--color-light-black);
 }
 body:has(.dark_mode) .position_player:nth-child(odd) .player_name {
     background-color: var(--color-dark-gray);
